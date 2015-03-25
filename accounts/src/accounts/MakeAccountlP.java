@@ -9,7 +9,7 @@ public class MakeAccountlP extends MakeAccountl{
 		passwd = pass;
 	}
 	
-	public void deposit(String pass, int dep){
+	public void deposit(String pass, double dep){
 		if(pass.equals(passwd)){
 			current_bal += dep;
 			System.out.println("Balance:" + current_bal);
@@ -17,11 +17,11 @@ public class MakeAccountlP extends MakeAccountl{
 			list = list + "(+ " + dep + " = " + current_bal + " ) )";
 		}
 		else{
-			System.out.println("Incorrect Password");
+			pw_error();
 		}
 	}
 	
-	public void withdraw(String pass, int take){
+	public void withdraw(String pass, double take){
 		if(pass.equals(passwd)){
 			if(take <= current_bal){
 				current_bal -= take;
@@ -34,7 +34,7 @@ public class MakeAccountlP extends MakeAccountl{
 			}
 		}
 		else{
-			System.out.println("Incorrect Password");
+			pw_error();
 		}
 	}
 	
@@ -43,7 +43,7 @@ public class MakeAccountlP extends MakeAccountl{
 			System.out.println("Balance:" + current_bal);
 		}
 		else{
-			System.out.println("Incorrect Password");
+			pw_error();
 		}
 	}
 	
@@ -52,7 +52,11 @@ public class MakeAccountlP extends MakeAccountl{
 			System.out.println("Ledger:" + list);
 		}
 		else{
-			System.out.println("Incorrect Password");
+			pw_error();
 		}
+	}
+	
+	public void pw_error(){
+		System.out.println("Incorrect Password");
 	}
 }

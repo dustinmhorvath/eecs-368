@@ -9,14 +9,14 @@ public class MakeAccountl extends MakeAccount{
 		list = "'( (start = " + dep + " ) )";
 	}
 
-	public void deposit(int dep){
+	public void deposit(double dep){
 		current_bal += dep;
 		System.out.println("Balance:" + current_bal);
 		list = list.substring(0, list.length()-1);
 		list = list + "(+ " + dep + " = " + current_bal + " ) )";
 	}
 	
-	public void withdraw(int take){
+	public void withdraw(double take){
 		if(take <= current_bal){
 			current_bal -= take;
 			System.out.println("Balance:" + current_bal);

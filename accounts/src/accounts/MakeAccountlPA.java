@@ -1,7 +1,7 @@
 package accounts;
 
 public class MakeAccountlPA extends MakeAccountlP{
-	int max_attempts = 6;
+	int max_attempts = 8;
 	int count;
 	
 	public MakeAccountlPA(double dep, String pass){
@@ -9,8 +9,8 @@ public class MakeAccountlPA extends MakeAccountlP{
 		count = 0;
 	}
 
-	public void deposit(String pass, int dep){
-		if(count <= max_attempts){
+	public void deposit(String pass, double dep){
+		if(count < max_attempts){
 			if(pass.equals(passwd)){
 				current_bal += dep;
 				System.out.println("Balance:" + current_bal);
@@ -18,8 +18,7 @@ public class MakeAccountlPA extends MakeAccountlP{
 				list = list + "(+ " + dep + " = " + current_bal + " ) )";
 			}
 			else{
-				System.out.println("Incorrect Password");
-				count++;
+				pw_error();
 			}
 		}
 		else{
@@ -27,8 +26,8 @@ public class MakeAccountlPA extends MakeAccountlP{
 		}
 	}
 	
-	public void withdraw(String pass, int take){
-		if(count <= max_attempts){
+	public void withdraw(String pass, double take){
+		if(count < max_attempts){
 			if(pass.equals(passwd)){
 				if(take <= current_bal){
 					current_bal -= take;
@@ -41,8 +40,7 @@ public class MakeAccountlPA extends MakeAccountlP{
 				}
 			}
 			else{
-				System.out.println("Incorrect Password");
-				count++;
+				pw_error();
 			}
 		}
 		else{
@@ -51,13 +49,12 @@ public class MakeAccountlPA extends MakeAccountlP{
 	}
 	
 	public void view(String pass){
-		if(count <= max_attempts){
+		if(count < max_attempts){
 			if(pass.equals(passwd)){
 				System.out.println("Balance:" + current_bal);
 			}
 			else{
-				System.out.println("Incorrect Password");
-				count++;
+				pw_error();
 			}
 		}
 		else{
@@ -66,13 +63,12 @@ public class MakeAccountlPA extends MakeAccountlP{
 	}
 	
 	public void show(String pass){
-		if(count <= max_attempts){
+		if(count < max_attempts){
 			if(pass.equals(passwd)){
 				System.out.println("Ledger:" + list);
 			}
 			else{
-				System.out.println("Incorrect Password");
-				count++;
+				pw_error();
 			}
 		}
 		else{
@@ -80,4 +76,8 @@ public class MakeAccountlPA extends MakeAccountlP{
 		}
 	}
 
+	public void pw_error(){
+		System.out.println("Incorrect Password");
+		count++;
+	}
 }
