@@ -1,3 +1,11 @@
+/*
+ * Dustin Horvath
+ * Accounts program
+ * 3/25/15
+ * EECS 368 HW #3
+ * MakeAccountlPA.java: Inherits from MakeAccountlP. Adds attempts lockout feature.
+ */
+
 package accounts;
 
 public class MakeAccountlPA extends MakeAccountlP{

@@ -1,3 +1,11 @@
+/*
+ * Dustin Horvath
+ * Accounts program
+ * 3/25/15
+ * EECS 368 HW #3
+ * MakeAccountlPATS.java: Inherits from MakeAccountlPAT. Adds interest computation feature.
+ */
+
 package accounts;
 
 public class MakeAccountlPATS extends MakeAccountlPAT{

@@ -1,3 +1,11 @@
+/*
+ * Dustin Horvath
+ * Accounts program
+ * 3/25/15
+ * EECS 368 HW #3
+ * MakeAccountl.java: Inherits from MakeAccount. Adds ledger feature.
+ */
+
 package accounts;
 
 

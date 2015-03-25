@@ -1,3 +1,11 @@
+/*
+ * Dustin Horvath
+ * Accounts program
+ * 3/25/15
+ * EECS 368 HW #3
+ * main.java
+ */
+
 package accounts;
 
 public class main {

@@ -1,3 +1,11 @@
+/*
+ * Dustin Horvath
+ * Accounts program
+ * 3/25/15
+ * EECS 368 HW #3
+ * MakeAccountlPAT.java: Inherits from MakeAccountlPA. Adds account balance transfer feature.
+ */
+
 package accounts;
 
 public class MakeAccountlPAT extends MakeAccountlPA{

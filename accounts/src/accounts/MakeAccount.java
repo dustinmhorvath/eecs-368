@@ -1,3 +1,11 @@
+/*
+ * Dustin Horvath
+ * Accounts program
+ * 3/25/15
+ * EECS 368 HW #3
+ * MakeAccount.java: Base class for all accounts. Has get/set for account balance.
+ */
+
 package accounts;
 
 public class MakeAccount {	

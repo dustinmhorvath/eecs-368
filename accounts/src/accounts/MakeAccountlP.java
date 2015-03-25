@@ -1,3 +1,11 @@
+/*
+ * Dustin Horvath
+ * Accounts program
+ * 3/25/15
+ * EECS 368 HW #3
+ * MakeAccountlP.java: Inherits from MakeAccountl. Adds password feature (basic).
+ */
+
 package accounts;
 
 public class MakeAccountlP extends MakeAccountl{
