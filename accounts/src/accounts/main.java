@@ -1,9 +1,6 @@
 package accounts;
 
-
-
 public class main {
-
 	public static void main(String[] args) {
 
 		System.out.println();
@@ -25,7 +22,7 @@ public class main {
 		acc1.deposit(55);
 		acc1.show();
 		
-/*		System.out.println();
+		System.out.println();
 		System.out.println("-----------------PART 3-------------------");
 		MakeAccountlP acc1p = new MakeAccountlP(100,"secret");
 		acc1p.view("secret");
@@ -63,7 +60,5 @@ public class main {
 		sav.interest("bananas");
 		sav.interest("rosebud");
 		sav.deposit("rosebud", 0);
-	*/	
 	}
-
 }
