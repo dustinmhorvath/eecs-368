@@ -1,10 +1,6 @@
 package accounts;
 
-import java.util.*;
-
-
-public class MakeAccount {
-	
+public class MakeAccount {	
 	protected double current_bal = 0;
 	
 	public MakeAccount(double dep){
@@ -29,5 +25,4 @@ public class MakeAccount {
 	public void view(){
 		System.out.println("Balance:" + current_bal);
 	}
-
 }

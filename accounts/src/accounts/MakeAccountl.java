@@ -9,6 +9,7 @@ public class MakeAccountl extends MakeAccount{
 		list = "'( (start = " + dep + " ) )";
 	}
 
+	@Override
 	public void deposit(double dep){
 		current_bal += dep;
 		System.out.println("Balance:" + current_bal);
@@ -16,6 +17,7 @@ public class MakeAccountl extends MakeAccount{
 		list = list + "(+ " + dep + " = " + current_bal + " ) )";
 	}
 	
+	@Override
 	public void withdraw(double take){
 		if(take <= current_bal){
 			current_bal -= take;
