@@ -271,7 +271,7 @@ public class main {
 		System.out.println();
 		System.out.println("-----------------PART 2-------------------");
 		MakeAccountl acc1 = new MakeAccountl(100);
-		acc1.show();
+		acc1.view();
 		acc1.withdraw(40);
 		acc1.deposit(55);
 		acc1.show();
