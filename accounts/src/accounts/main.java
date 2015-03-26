@@ -8,6 +8,252 @@
 
 package accounts;
 
+class MakeAccount {	
+	protected double current_bal = 0;
+	
+	public MakeAccount(double dep){
+		current_bal = dep;
+	}
+	
+	public void deposit(double dep){
+		current_bal += dep;
+		System.out.println("Balance:" + current_bal);
+	}
+	
+	public void withdraw(double take){
+		if(take <= current_bal){
+			current_bal -= take;
+			System.out.println("Balance:" + current_bal);
+		}
+		else{
+			System.out.println("Insufficient Funds");
+		}
+	}
+	
+	public void view(){
+		System.out.println("Balance:" + current_bal);
+	}
+}
+
+class MakeAccountl extends MakeAccount{
+	String list;
+	
+	public MakeAccountl(double dep){
+		super(dep);
+		list = "'( (start = " + dep + " ) )";
+	}
+
+	@Override
+	public void deposit(double dep){
+		current_bal += dep;
+		System.out.println("Balance:" + current_bal);
+		list = list.substring(0, list.length()-1);
+		list = list + "(+ " + dep + " = " + current_bal + " ) )";
+	}
+	
+	@Override
+	public void withdraw(double take){
+		if(take <= current_bal){
+			current_bal -= take;
+			System.out.println("Balance:" + current_bal);
+			list = list.substring(0, list.length()-1);
+			list = list + "(- " + take + " = " + current_bal + " ) )";
+		}
+		else{
+			System.out.println("Insufficient Funds");
+		}
+	}
+
+	public void show(){
+		System.out.println("Ledger:" + list);
+	}
+}
+
+class MakeAccountlP extends MakeAccountl{
+
+	String passwd;
+	
+	public MakeAccountlP(double dep, String pass) {
+		super(dep);
+		passwd = pass;
+	}
+	
+	public void deposit(String pass, double dep){
+		if(pass.equals(passwd)){
+			current_bal += dep;
+			System.out.println("Balance:" + current_bal);
+			list = list.substring(0, list.length()-1);
+			list = list + "(+ " + dep + " = " + current_bal + " ) )";
+		}
+		else{
+			pw_error();
+		}
+	}
+	
+	public void withdraw(String pass, double take){
+		if(pass.equals(passwd)){
+			if(take <= current_bal){
+				current_bal -= take;
+				System.out.println("Balance:" + current_bal);
+				list = list.substring(0, list.length()-1);
+				list = list + "(- " + take + " = " + current_bal + " ) )";
+			}
+			else{
+				System.out.println("Insufficient Funds");
+			}
+		}
+		else{
+			pw_error();
+		}
+	}
+	
+	public void view(String pass){
+		if(pass.equals(passwd)){
+			System.out.println("Balance:" + current_bal);
+		}
+		else{
+			pw_error();
+		}
+	}
+	
+	public void show(String pass){
+		if(pass.equals(passwd)){
+			System.out.println("Ledger:" + list);
+		}
+		else{
+			pw_error();
+		}
+	}
+	
+	public void pw_error(){
+		System.out.println("Incorrect Password");
+	}
+}
+
+class MakeAccountlPA extends MakeAccountlP{
+	int max_attempts = 8;
+	int count;
+	
+	public MakeAccountlPA(double dep, String pass){
+		super(dep, pass);
+		count = 0;
+	}
+
+	public void deposit(String pass, double dep){
+		if(count < max_attempts){
+			if(pass.equals(passwd)){
+				current_bal += dep;
+				System.out.println("Balance:" + current_bal);
+				list = list.substring(0, list.length()-1);
+				list = list + "(+ " + dep + " = " + current_bal + " ) )";
+			}
+			else{
+				pw_error();
+			}
+		}
+		else{
+			System.out.println("Cops Called");
+		}
+	}
+	
+	public void withdraw(String pass, double take){
+		if(count < max_attempts){
+			if(pass.equals(passwd)){
+				if(take <= current_bal){
+					current_bal -= take;
+					System.out.println("Balance:" + current_bal);
+					list = list.substring(0, list.length()-1);
+					list = list + "(- " + take + " = " + current_bal + " ) )";
+				}
+				else{
+					System.out.println("Insufficient Funds");
+				}
+			}
+			else{
+				pw_error();
+			}
+		}
+		else{
+			System.out.println("Cops Called");
+		}
+	}
+	
+	public void view(String pass){
+		if(count < max_attempts){
+			if(pass.equals(passwd)){
+				System.out.println("Balance:" + current_bal);
+			}
+			else{
+				pw_error();
+			}
+		}
+		else{
+			System.out.println("Cops Called");
+		}
+	}
+	
+	public void show(String pass){
+		if(count < max_attempts){
+			if(pass.equals(passwd)){
+				System.out.println("Ledger:" + list);
+			}
+			else{
+				pw_error();
+			}
+		}
+		else{
+			System.out.println("Cops Called");
+		}
+	}
+
+	@Override
+	public void pw_error(){
+		System.out.println("Incorrect Password");
+		count++;
+	}
+}
+
+class MakeAccountlPAT extends MakeAccountlPA{
+
+	public MakeAccountlPAT(double dep, String pass) {
+		super(dep, pass);
+	}
+	
+	public void transfer(String from_pw, MakeAccountlPAT to_acc, String to_pw){
+		if(!this.passwd.equals(from_pw)){
+			System.out.println("Incorrect Password");
+		}
+		else if(!to_acc.passwd.equals(to_pw)){
+			System.out.println("Incorrect Password");
+		}
+		else if(count <= max_attempts){
+			double temp = this.current_bal;
+			this.withdraw(from_pw, temp);
+			to_acc.deposit(to_pw, temp);
+		}
+	}
+}
+
+class MakeAccountlPATS extends MakeAccountlPAT{
+	double rate;
+	
+	public MakeAccountlPATS(double dep, String pass, double intr) {
+		super(dep, pass);
+		rate = intr;
+	}
+
+	public void interest(String pass){
+		if(passwd.equals(pass)){
+			current_bal = current_bal * (1 + rate);
+			view(pass);
+		}
+		else{
+			pw_error();
+		}
+	}
+	
+}
+
 public class main {
 	public static void main(String[] args) {
 
