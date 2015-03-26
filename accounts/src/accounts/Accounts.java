@@ -3,7 +3,7 @@
  * Accounts program
  * 3/25/15
  * EECS 368 HW #3
- * main.java
+ * Accounts.java: Manages a balance using passwords, ledgers, account transfers, and savings.
  */
 
 package accounts;
@@ -254,7 +254,7 @@ class MakeAccountlPATS extends MakeAccountlPAT{
 	
 }
 
-public class main {
+public class Accounts {
 	public static void main(String[] args) {
 
 		System.out.println();
