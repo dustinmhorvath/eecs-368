@@ -1,9 +1,9 @@
-noFactors i = (i `mod` 3 /= 0 && i `mod` 5 /= 0 && i `mod` 7 /= 0)
+hasFactor i = (i `mod` 3 == 0 || i `mod` 5 == 0 || i `mod` 7 == 0)
 
 nextNone i n x = do
  if(n < x)
   then
-   if(noFactors i)
+   if(hasFactor i)
     then
      do
       print i
