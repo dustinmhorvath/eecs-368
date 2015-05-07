@@ -1,25 +1,22 @@
 isPrime k = null [ x | x <- [2..k - 1], k `mod`x  == 0]
 
-hasFactor i = (i `mod` 3 == 0 || i `mod` 5 == 0 || i `mod` 7 == 0)
-
-next357 i n x = do
- if(n < x)
+noHigher x = noHigherPrimes 9 x
+noHigherPrimes i x = 
+ if(i < x)
   then
-   if(hasFactor i)
+   if(isPrime i)
     then
-     do
-      print i
-      next357 (i+1) (n+1) x
+     if(x `mod` i == 0)
+      then
+       True
+      else
+       noHigherPrimes (i+2) x
     else
-     next357 (i+1) n x
+     noHigherPrimes (i+2) x
   else
-   return()
+   False
 
-enumerate x = do
- next357 1 0 x
- return()
-
-isHamming i = ((i `mod` 2 == 0 || i `mod` 3 == 0 || i `mod` 5 == 0 ))
+isHamming i = ((i `mod` 3 == 0 || i `mod` 5 == 0 || i `mod` 7 == 0) && not (noHigher i) && i `mod` 2 /= 0)
 
 nextHamming i n x = do
  if(n < x)
@@ -43,3 +40,5 @@ enumHamming x = do
   else
    return()
  return()
+
+
