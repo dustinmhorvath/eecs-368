@@ -1,5 +1,12 @@
+-- This is a hideously brute-force attempt at producing Hamming numbers. It does far more computation
+--  than is likely necessary, and does a poor job of leveraging the programmatic advantages that haskell
+--  offers for manipulating lists and infinite series. It stands as a testament to stubbornness, but also 
+--  gives a new perspective on how to approach the problem.
+
+
 isPrime k = null [ x | x <- [2..k - 1], k `mod`x  == 0]
 
+-- This function checks to make sure there are no primes 9 or larger inside the parameter
 noHigher x = noHigherPrimes 9 x
 noHigherPrimes i x = 
  if(i < x)
